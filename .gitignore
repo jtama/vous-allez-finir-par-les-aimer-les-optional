@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+reveal.js
+*.html
+.asciidoctor
+!index-docinfo-footer.html

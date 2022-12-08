@@ -1,0 +1,14 @@
+= Vous allez finir par les aimer les `Optional`?
+:docinfo: private
+:source-highlighter: highlight.js
+:autofit-option:
+:icons: font
+:revealjs_slideNumber: true
+:revealjs_theme: white
+:revealjs_history: true
+:revealjs_pdfseparatefragments: false
+:revealjs_width: 1200
+:title-slide-background-image: title.png
+:title-slide-background-size: fill
+:customcss: css/meetup.css
+:imagesdir: images
