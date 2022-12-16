@@ -413,7 +413,19 @@ ul.byline {
 ul.byline li + li {
   margin-top: 0.25em;
 }
-</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/v4-shims.min.css"><link rel="stylesheet" href="css/meetup.css"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title" data-background-size="fill" data-background-image="images/title.png"><h1>Vous allez finir par les aimer les <code>Optional</code>?</h1></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/v4-shims.min.css"><link rel="stylesheet" href="css/meetup.css"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title" data-background-size="fill" data-background-image="images/title.png"><h1>Vous allez finir par les aimer les <code>Optional</code>?</h1></section><section><section id="_intro"><div class="slide-content"><div class="imageblock"><img src="images/WFTPM.png" alt="WFTPM"></div><aside class="notes"><div class="paragraph"><p>Vous connaissez cette image ?</p></div>
+<div class="paragraph"><p>Bon bin ça me représente pas mal. Avec des contexts différents.</p></div>
+<div class="paragraph"><p>Il y a bientôt 10 ans :</p></div>
+<div class="paragraph"><p>Je disais ça : "Haaaa c&#8217;est vraiment nul ifpresent pourrrrrri"</p></div>
+<div class="paragraph"><p>Et maintenant je dis :</p></div>
+<div class="paragraph"><p>Bon il serait peut-être temps d&#8217;apprendre à utiliser les optionals !</p></div>
+<div class="paragraph"><p>Du coup peut-être que dans 10 ans, je dirais encore autre chose !</p></div></aside></div></section><section id="_quest_ce_que_cest"><h2>Qu&#8217;est-ce que c&#8217;est ?</h2><div class="slide-content"><div class="quoteblock"><blockquote>A container object which may or may not contain a non-null value.</blockquote><div class="attribution">&#8212; docs.oracle.com</div></div></div></section><section id="_oui_mais_pourquoi"><h2>Oui mais pourquoi ?</h2><div class="slide-content"><div class="imageblock"><img src="images/vision.jpg" alt="Vision" width="640" height="480"></div>
+<aside class="notes"><div class="paragraph"><p>Avant tout si les optionals ont été introduit c&#8217;est pour souligner l&#8217;intention, donner une vision aux utilisateurs de notre code, pas pour empêcher les null pointer&#8230;&#8203;</p></div>
+<div class="paragraph"><p>Je vais essayer de vous montrer des cas concrets de leur utilisation à bon escient</p></div></aside></div></section></section>
+<section><section id="_outro"></section><section class="transparency" data-background-image="images/Thats_all_folks.svg" data-background-size="fill"><div class="slide-content">
+<div class="paragraph"><p>Merci \o/ !</p></div>
+<div class="paragraph"><p>Des questions ?</p></div>
+<div class="paragraph medium"><p>Credits: Malcolm Browne, Wokandapix, Warner</p></div></div></section></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
