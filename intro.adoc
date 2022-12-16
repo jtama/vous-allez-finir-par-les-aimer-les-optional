@@ -1,0 +1,39 @@
+[%notitle]
+== Intro
+
+image::WFTPM.png[]
+
+[.notes]
+--
+Vous connaissez cette image ?
+
+Bon bin ça me représente pas mal. Avec des contexts différents.
+
+Il y a bientôt 10 ans :
+
+Je disais ça : "Haaaa c'est vraiment nul ifpresent pourrrrrri"
+
+Et maintenant je dis :
+
+Bon il serait peut-être temps d'apprendre à utiliser les optionals !
+
+Du coup peut-être que dans 10 ans, je dirais encore autre chose !
+--
+
+=== Qu'est-ce que c'est ?
+
+[quote, docs.oracle.com]
+
+A container object which may or may not contain a non-null value.
+
+=== Oui mais pourquoi ?
+
+image::vision.jpg[Vision, 640,480]
+
+[.notes]
+--
+Avant tout si les optionals ont été introduit c'est pour souligner l'intention, donner une vision aux utilisateurs de notre code, pas pour empêcher les null pointer...
+
+Je vais essayer de vous montrer des cas concrets de leur utilisation à bon escient
+--
+

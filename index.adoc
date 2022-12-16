@@ -12,3 +12,7 @@
 :title-slide-background-size: fill
 :customcss: css/meetup.css
 :imagesdir: images
+
+include::intro.adoc[]
+include::outro.adoc[]
+

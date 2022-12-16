@@ -1,0 +1,17 @@
+[%notitle]
+== Outro
+
+[.transparency]
+=== !
+
+image::Thats_all_folks.svg[background, size=fill]
+
+Merci \o/ !
+
+Des questions ?
+
+//[.important-text.vertical-align-middle]
+//image:qr.png[width=200]
+
+[.medium]
+Credits: Malcolm Browne, Wokandapix, Warner
