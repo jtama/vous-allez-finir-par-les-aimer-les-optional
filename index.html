@@ -421,7 +421,39 @@ ul.byline li + li {
 <div class="paragraph"><p>Bon il serait peut-être temps d&#8217;apprendre à utiliser les optionals !</p></div>
 <div class="paragraph"><p>Du coup peut-être que dans 10 ans, je dirais encore autre chose !</p></div></aside></div></section><section id="_quest_ce_que_cest"><h2>Qu&#8217;est-ce que c&#8217;est ?</h2><div class="slide-content"><div class="quoteblock"><blockquote>A container object which may or may not contain a non-null value.</blockquote><div class="attribution">&#8212; docs.oracle.com</div></div></div></section><section id="_oui_mais_pourquoi"><h2>Oui mais pourquoi ?</h2><div class="slide-content"><div class="imageblock"><img src="images/vision.jpg" alt="Vision" width="640" height="480"></div>
 <aside class="notes"><div class="paragraph"><p>Avant tout si les optionals ont été introduit c&#8217;est pour souligner l&#8217;intention, donner une vision aux utilisateurs de notre code, pas pour empêcher les null pointer&#8230;&#8203;</p></div>
-<div class="paragraph"><p>Je vais essayer de vous montrer des cas concrets de leur utilisation à bon escient</p></div></aside></div></section></section>
+<div class="paragraph"><p>Je vais essayer de vous montrer des cas concrets de leur utilisation à bon escient</p></div></aside></div></section><section id="_présentation" class="columns is-vcentered transparency" data-background-image="images/presentation.jpg" data-background-size="fill"><div class="slide-content">
+<div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/profile_jta.jpg" alt="profile jta" width="500"></div></div></div>
+<div class="openblock column has-text-left"><div class="content"><div class="paragraph important-text"><p>Jérôme</p></div>
+<div class="paragraph important-text"><p>Tech Lead / Architecte</p></div>
+<div class="paragraph important-text vertical-align-middle"><p><span class="image"><img src="images/logo_onepoint.jpeg" alt="logo onepoint" width="50"></span>
+onepoint</p></div>
+<div class="paragraph important-text vertical-align-middle"><p><span class="icon"><i class="fa fa-github"></i></span> @jtama <span class="image"><img src="images/avatar.png" alt="avatar" width="100"></span></p></div></div></div></div></section></section>
+<section><section id="_quand_les_utiliser" class="light" data-background-image="images/quand.jpg" data-background-size="fill"><h2>Quand les utiliser ?</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>En que producteur de code la question est donc, quand dois-je produire ou choisir de faire produire des <code>Optional</code> ?</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public class LeMondeExterieurConfig {
+
+    private Optional&lt;String&gt; login;
+
+    private Optional&lt;String&gt; password;
+
+    private Optional&lt;Boolean&gt; skipLogin;
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Représentation du monde extérieur
+On verra plus tard ce qu&#8217;on en fait.</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public interface LeMondeExterieurAccess {
+
+     Optional&lt;Person&gt; findById(UUID id);
+
+     List&lt;Person&gt; findByName(String name);
+
+     Person findByNir(String nir) throws InvalidNirException;
+}</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Accès à des tiers.
+On verra plus tard ce qu&#8217;on en fait.</p></div></aside></div></section></section>
+<section id="_oui_mais_quest_ce_que_jen_fait"><h2>Oui mais qu&#8217;est-ce que j&#8217;en fait ?</h2><div class="slide-content"><div class="paragraph"><p>===</p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">...
+if (optional.isPresent()) {
+  var value = optional.get();
+  // NOOOOOOOOOOOOOOOOON !!!!
+}
+...</code></pre></div></div></div></section>
 <section><section id="_outro"></section><section class="transparency" data-background-image="images/Thats_all_folks.svg" data-background-size="fill"><div class="slide-content">
 <div class="paragraph"><p>Merci \o/ !</p></div>
 <div class="paragraph"><p>Des questions ?</p></div>
