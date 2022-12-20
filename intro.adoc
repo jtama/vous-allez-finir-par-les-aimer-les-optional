@@ -37,3 +37,29 @@ Avant tout si les optionals ont été introduit c'est pour souligner l'intention
 Je vais essayer de vous montrer des cas concrets de leur utilisation à bon escient
 --
 
+[%notitle.columns.is-vcentered.transparency]
+=== Présentation
+
+image::presentation.jpg[background, size=fill]
+
+[.column.is-one-third]
+--
+image::profile_jta.jpg[width=500]
+--
+
+[.column.has-text-left]
+--
+
+[.important-text]
+Jérôme
+
+[.important-text]
+Tech Lead / Architecte
+
+[.important-text.vertical-align-middle]
+image:logo_onepoint.jpeg[width=50]
+onepoint
+
+[.important-text.vertical-align-middle]
+icon:github[] @jtama image:avatar.png[width=100]
+--

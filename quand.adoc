@@ -1,0 +1,50 @@
+[.light]
+== Quand les utiliser ?
+
+image::quand.jpg[background, size=fill]
+
+[.notes]
+--
+En que producteur de code la question est donc, quand dois-je produire ou choisir de faire produire des `Optional` ?
+--
+
+=== !
+
+[source,java]
+----
+public class LeMondeExterieurConfig {
+
+    private Optional<String> login;
+
+    private Optional<String> password;
+
+    private Optional<Boolean> skipLogin;
+}
+----
+
+[.notes]
+--
+
+Représentation du monde extérieur
+On verra plus tard ce qu'on en fait.
+--
+
+=== !
+
+[source,java]
+----
+public interface LeMondeExterieurAccess {
+
+     Optional<Person> findById(UUID id);
+
+     List<Person> findByName(String name);
+
+     Person findByNir(String nir) throws InvalidNirException;
+}
+----
+
+[.notes]
+--
+Accès à des tiers.
+On verra plus tard ce qu'on en fait.
+--

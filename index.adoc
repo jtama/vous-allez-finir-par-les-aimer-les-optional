@@ -14,5 +14,7 @@
 :imagesdir: images
 
 include::intro.adoc[]
+include::quand.adoc[]
+include::comment.adoc[]
 include::outro.adoc[]
 

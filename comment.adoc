@@ -1,0 +1,14 @@
+== Oui mais qu'est-ce que j'en fait ?
+
+===
+
+[source, java]
+----
+...
+if (optional.isPresent()) {
+  var value = optional.get();
+  // NOOOOOOOOOOOOOOOOON !!!!
+}
+...
+----
+
