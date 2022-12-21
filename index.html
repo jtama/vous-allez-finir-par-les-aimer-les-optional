@@ -424,10 +424,11 @@ ul.byline li + li {
 <div class="paragraph"><p>Je vais essayer de vous montrer des cas concrets de leur utilisation à bon escient</p></div></aside></div></section><section id="_présentation" class="columns is-vcentered transparency" data-background-image="images/presentation.jpg" data-background-size="fill"><div class="slide-content">
 <div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/profile_jta.jpg" alt="profile jta" width="500"></div></div></div>
 <div class="openblock column has-text-left"><div class="content"><div class="paragraph important-text"><p>Jérôme</p></div>
-<div class="paragraph important-text"><p>Tech Lead / Architecte</p></div>
+<div class="paragraph important-text"><p>Tech Lead / Architecte / Compagnon du devoir</p></div>
 <div class="paragraph important-text vertical-align-middle"><p><span class="image"><img src="images/logo_onepoint.jpeg" alt="logo onepoint" width="50"></span>
 onepoint</p></div>
-<div class="paragraph important-text vertical-align-middle"><p><span class="icon"><i class="fa fa-github"></i></span> @jtama <span class="image"><img src="images/avatar.png" alt="avatar" width="100"></span></p></div></div></div></div></section></section>
+<div class="paragraph important-text vertical-align-middle"><p><span class="icon"><i class="fa fa-github"></i></span> @jtama <span class="image"><img src="images/avatar.png" alt="avatar" width="100"></span></p></div></div></div>
+<aside class="notes"><div class="paragraph"><p>Mais je n&#8217;ai pas fait mon tour de france, du coup je prend aujourd&#8217;hui mon baton de pellerin pour me rattraper&#8230;&#8203;</p></div></aside></div></section></section>
 <section><section id="_quand_les_utiliser" class="light" data-background-image="images/quand.jpg" data-background-size="fill"><h2>Quand les utiliser ?</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>En que producteur de code la question est donc, quand dois-je produire ou choisir de faire produire des <code>Optional</code> ?</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public class LeMondeExterieurConfig {
 
     private Optional&lt;String&gt; login;
@@ -446,18 +447,70 @@ On verra plus tard ce qu&#8217;on en fait.</p></div></aside></div></section><sec
      Person findByNir(String nir) throws InvalidNirException;
 }</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Accès à des tiers.
-On verra plus tard ce qu&#8217;on en fait.</p></div></aside></div></section></section>
-<section id="_oui_mais_quest_ce_que_jen_fait"><h2>Oui mais qu&#8217;est-ce que j&#8217;en fait ?</h2><div class="slide-content"><div class="paragraph"><p>===</p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">...
+On verra plus tard ce qu&#8217;on en fait.</p></div>
+<div class="paragraph"><p>Numéro d&#8217;Inscription au Répertoire. Votre numéro de sécu quoi&#8230;&#8203;</p></div></aside></div></section></section>
+<section><section id="_oui_mais_quest_ce_que_jen_fait"><h2>Oui mais qu&#8217;est-ce que j&#8217;en fait ?</h2></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">...
 if (optional.isPresent()) {
   var value = optional.get();
   // NOOOOOOOOOOOOOOOOON !!!!
 }
-...</code></pre></div></div></div></section>
-<section><section id="_outro"></section><section class="transparency" data-background-image="images/Thats_all_folks.svg" data-background-size="fill"><div class="slide-content">
+...</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>A ce moment là autant continuer à travailler avec du null</p></div></aside></div></section><section><div class="slide-content"><div class="imageblock"><img src="images/raclette_simple.png" alt="raclette simple" width="600px"></div>
+<aside class="notes"><div class="paragraph"><p>On va commencer avec les cas simples, en prenant exemple sur une liste de course</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">private Optional&lt;Pain&gt; getPainDeCampagne() { /*TODO implement*/ }
+
+
+Pain pain = getPainDeCampagne().orElse(baguette);</code></pre></div></div></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,2,3,4,5|7|14" data-lang="java">private Optional&lt;Charcuterie&gt; getCharcuterieDuCentre() { /*TODO implement*/ }
+
+private Charcuterie getCharcuteriePlusLoin() {
+    /*TODO Je sens que ça va être long.. 💀*/
+}
+
+Charcuterie = getCharcuterieDuCentre().orElse(getCharcuteriePlusLoin());
+
+
+
+
+
+
+Charcuterie = getCharcuterieDuCentre().orElseGet(() -&gt; getCharcuteriePlusLoin());</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Java est ainsi fait !
+Charcuterie : On ne veut exécuter <code>getCharcuteriePlusLoin</code> QUE en cas de besoin !!!</p></div></aside></div></section><section><div class="slide-content"><div class="imageblock"><img src="images/todolist.png" alt="todolist" width="600px"></div></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">double participation = cadeau
+    .map(cadeau-&gt;cadeau.getPrix())
+    .orElse(20l);</code></pre></div></div></div></section><section><div class="slide-content"><div class="imageblock"><img src="images/sonar.png" alt="sonar"></div>
+<aside class="notes"><div class="paragraph"><p>Alors là non !</p></div>
+<div class="paragraph"><p>Je prend ici mon baton de pelerin. Sonar c&#8217;est très bien. Mais ce n&#8217;est pas la vérité absolue ! Restez critique!</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">caviste.getTouraine().ifPresent(bouteille -&gt; onEnPrend(bouteille);</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>On note ici l&#8217;appel conditionnel de méthode.</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">caviste.getTouraine().
+    .filter(bouteille -&gt; pasTropCher(bouteille))
+    .ifPresent(bouteille -&gt; onEnPrend(bouteille);</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>On retrouve beaucoup des méthodes présentent sur les streams.</p></div></aside></div></section><section></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,2|6,7|11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119" data-lang="java">maybePrimeur /*Optional&lt;Primeur&gt;*/
+  .map(primeur -&gt; primeur.getMangue());
+
+
+
+maybePrimeur /*Optional&lt;Primeur&gt;*/
+  .map(primeur -&gt; primeur.getMangue()); /*Optional&lt;Optional&lt;Fruit&gt;&gt;*/
+
+
+
+maybePrimeur /*Optional&lt;Primeur&gt;*/
+  .flatMap(primeur -&gt; primeur.getMangue()) /*Optional&lt;Fruit&gt;&gt;*/
+  .orElse(new Ananas());</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Attention aux optionals d&#8217;optionals</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">maybeClef
+  .ifPresentOrElse(
+      clef -&gt; utilise(clef),
+      () -&gt; passeParLaFenêtre());</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Il n&#8217;existe pas de ifAbsent, mais on peut transformer cette méthode en ne faisant rien dans le consumer.</p></div></aside></div></section></section>
+<section><section id="_et_là_je_les_utilise"><h2>Et là je les utilise ?</h2></section><section><div class="slide-content"><div class="openblock fragment"><div class="content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">String code = Optional.ofNullable(app.getCodeImputationDefaut())
+                .orElse(Strings.EMPTY);</code></pre></div></div></div></div>
+<aside class="notes"><div class="paragraph"><p>Code vu en vrai&#8230;&#8203;
+Ici soit on a a main sur la méthode <code>app.getCodeImputationDefaut()</code>,
+Sinon je ne suis pas certain qu&#8217;on est gagné quoique ce soit, particulièrement en terme de lisibilité</p></div></aside></div></section><section id="_optionallist"><h2>Optional&lt;List&gt;</h2><div class="slide-content"><div class="paragraph"><p><span class="icon red"><i class="fa fa-poop fa-4*"></i></span></p></div>
+<aside class="notes"><div class="paragraph"><p>Et plus généralement, de tout ce qui ressemble à une collection.</p></div></aside></div></section><section id="_cas_à_la_marge"><h2>Cas à la marge</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Il existe en effet des cas ou la nullité n&#8217;a pas le même sens que l&#8217;absence, dans ce cas&#8230;&#8203;</p></div>
+<div class="paragraph"><p>Plus globalement, tout ce que j&#8217;ai raconté correspond à du cas général, mais on trouvera TOUJOURS des contre-exemples&#8230;&#8203;</p></div></aside></div></section></section>
+<section id="_outro" class="transparency" data-background-image="images/Thats_all_folks.svg" data-background-size="fill"><div class="slide-content">
 <div class="paragraph"><p>Merci \o/ !</p></div>
 <div class="paragraph"><p>Des questions ?</p></div>
-<div class="paragraph medium"><p>Credits: Malcolm Browne, Wokandapix, Warner</p></div></div></section></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<div class="paragraph medium"><p>Credits: Malcolm Browne, Wokandapix, Warner</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
