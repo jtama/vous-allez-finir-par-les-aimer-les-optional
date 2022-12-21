@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand");
+
 /* latin-ext */
 @font-face {
     font-family: 'Titillium Web';
@@ -6,6 +8,7 @@
     src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVxoMyOr9n_E7fdM3mDaZRbryhsA.woff2) format('woff2');
     unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
     font-family: 'Titillium Web';
@@ -23,6 +26,7 @@
     src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPDcZTIAOhVxoMyOr9n_E7ffEDBGIVzY5abuWIGxA.woff2) format('woff2');
     unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
     font-family: 'Titillium Bold';
@@ -65,6 +69,10 @@ body::after {
 .big {
     font-size: 60px;
     color: #012d3f;
+}
+
+.use-case {
+    font-family: "Gochi Hand", serif;
 }
 
 .red {
