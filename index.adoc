@@ -13,6 +13,14 @@
 :customcss: css/meetup.css
 :imagesdir: images
 
+[.notes]
+--
+J'ai longtemps hésiter à appeler ce talk  : "Vous allez finir par aimer les optional bordel de merde !"
+mais c'est un peu brutal, alors pour faire passer ma hargne j'ai utilisé cette image.
+
+Toute mon estime au premier qui reconnait !
+--
+
 include::intro.adoc[]
 include::quand.adoc[]
 include::comment.adoc[]

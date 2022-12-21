@@ -39,7 +39,7 @@ public interface LeMondeExterieurAccess {
 
      List<Person> findByName(String name);
 
-     Person findByNir(String nir) throws InvalidNirException;
+     Person findByNir(String nir) throws NotFoundException;
 }
 ----
 

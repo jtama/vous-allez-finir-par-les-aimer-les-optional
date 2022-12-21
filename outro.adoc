@@ -3,12 +3,19 @@
 
 image::Thats_all_folks.svg[background, size=fill]
 
+https://jtama.github.io/vous-allez-finir-par-les-aimer-les-optional/#/
+
 Merci \o/ !
 
 Des questions ?
 
-//[.important-text.vertical-align-middle]
-//image:qr.png[width=200]
-
 [.medium]
-Credits: Malcolm Browne, Wokandapix, Warner
+Crédits photos: Malcolm Browne, Wokandapix, Warner
+
+[.notes]
+--
+Regarder la javadoc, soyez à l'aise avec les lambdas et les interfaces du package `java.util.function`
+
+Et n'oubliez pas demain à 13H30 un choix cornélien:
+"Streetriders : Vous aimez jouer ? Ok ! On vous raconte comment on l'a développé..." ou "Le DevOps expliqué à mon père, agriculteur à la retraite."
+--

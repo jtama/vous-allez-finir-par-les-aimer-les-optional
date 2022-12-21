@@ -2,23 +2,6 @@
 
 === !
 
-[source, java]
-----
-...
-if (optional.isPresent()) {
-  var value = optional.get();
-  // NOOOOOOOOOOOOOOOOON !!!!
-}
-...
-----
-
-[.notes]
---
-A ce moment là autant continuer à travailler avec du null
---
-
-=== !
-
 image::raclette_simple.png[width="600px"]
 
 [.notes]
@@ -26,7 +9,10 @@ image::raclette_simple.png[width="600px"]
 On va commencer avec les cas simples, en prenant exemple sur une liste de course
 --
 
+[.use-case]
 === !
+
+✔️Pain de campagne, sinon baguette
 
 [source, java]
 ----
@@ -36,11 +22,16 @@ private Optional<Pain> getPainDeCampagne() { /*TODO implement*/ }
 Pain pain = getPainDeCampagne().orElse(baguette);
 ----
 
+[.use-case]
 === !
 
-[source, java, highlight="1..5|7|14"]
+✔️Si le boucher du centre a de la charcuterie, sinon chez le boucher BEAUCOUP plus loin.
+
+[source, java, highlight="1..7|9|20..21"]
 ----
-private Optional<Charcuterie> getCharcuterieDuCentre() { /*TODO implement*/ }
+private Optional<Charcuterie> getCharcuterieDuCentre() {
+    /*TODO implement*/
+}
 
 private Charcuterie getCharcuteriePlusLoin() {
     /*TODO Je sens que ça va être long.. 💀*/
@@ -53,20 +44,43 @@ Charcuterie = getCharcuterieDuCentre().orElse(getCharcuteriePlusLoin());
 
 
 
-Charcuterie = getCharcuterieDuCentre().orElseGet(() -> getCharcuteriePlusLoin());
+
+
+
+
+Charcuterie = getCharcuterieDuCentre()
+    .orElseGet(() -> getCharcuteriePlusLoin());
+----
+
+[.use-case]
+=== !
+
+✔️Fromage à raclette (ou core panic)
+
+[source, java]
+----
+Fromage morbier = maybeFromage.orElseThrow(() -> new ThreadDeath());
 ----
 
 [.notes]
 --
-Java est ainsi fait !
-Charcuterie : On ne veut exécuter `getCharcuteriePlusLoin` QUE en cas de besoin !!!
+Ici on aurait pu retourner directement une instance d'exception,
+mais leur instanciation est couteuse à cause du mécanisme de récupération de stacktrace.
 --
 
-=== !
+== !
 
 image::todolist.png[width="600px"]
 
+[.notes]
+--
+Quelques utilisations avancées.
+--
+
+[.use-case]
 === !
+
+✔️Si on trouve le prix du cadeau on le donne le prix, sinon on donne 20€.
 
 [source, java]
 ----
@@ -75,12 +89,18 @@ double participation = cadeau
     .orElse(20l);
 ----
 
+[.use-case]
 === !
 
+✔️Si le caviste a du Touraine, on en prend
+
+[%step]
 image::sonar.png[]
 
 [.notes]
 --
+Ici on a envie de donner un optional à une méthode
+
 Alors là non !
 
 Je prend ici mon baton de pelerin. Sonar c'est très bien. Mais ce n'est pas la vérité absolue ! Restez critique!
@@ -90,7 +110,7 @@ Je prend ici mon baton de pelerin. Sonar c'est très bien. Mais ce n'est pas la 
 
 [source, java]
 ----
-caviste.getTouraine().ifPresent(bouteille -> onEnPrend(bouteille);
+caviste.getTouraine().ifPresent(bouteille -> onEnPrend(bouteille));
 ----
 
 [.notes]
@@ -98,13 +118,16 @@ caviste.getTouraine().ifPresent(bouteille -> onEnPrend(bouteille);
 On note ici l'appel conditionnel de méthode.
 --
 
+[.use-case]
 === !
+
+✔️Si le caviste a du Touraine ET qu'il n'est pas trop cher, on en prend.
 
 [source, java]
 ----
-caviste.getTouraine().
+caviste.getTouraine()
     .filter(bouteille -> pasTropCher(bouteille))
-    .ifPresent(bouteille -> onEnPrend(bouteille);
+    .ifPresent(bouteille -> onEnPrend(bouteille));
 ----
 
 [.notes]
@@ -112,9 +135,10 @@ caviste.getTouraine().
 On retrouve beaucoup des méthodes présentent sur les streams.
 --
 
+[.use-case]
 === !
 
-=== !
+✔️Si le primeur est ouvert ET qu’il a de la mangue, on prend, sinon de l’ananas.
 
 [source, java, highlight="1..2|6..7|11..119"]
 ----
@@ -129,7 +153,7 @@ maybePrimeur /*Optional<Primeur>*/
 
 
 maybePrimeur /*Optional<Primeur>*/
-  .flatMap(primeur -> primeur.getMangue()) /*Optional<Fruit>>*/
+  .flatMap(primeur -> primeur.getMangue()) /*Optional<Fruit>*/
   .orElse(new Ananas());
 ----
 
@@ -138,7 +162,10 @@ maybePrimeur /*Optional<Primeur>*/
 Attention aux optionals d'optionals
 --
 
+[.use-case]
 === !
+
+✔️Si je trouve les clefs dans mon sac je les utilise, sinon je passe par la fenêtre.
 
 [source, java]
 ----
@@ -150,5 +177,5 @@ maybeClef
 
 [.notes]
 --
-Il n'existe pas de ifAbsent, mais on peut transformer cette méthode en ne faisant rien dans le consumer.
+Si la seule chose que vous voulez faire c'est vérifier son absence, il existe `isEmpty()`, que vous devrez tester dans du if classique...
 --

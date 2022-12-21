@@ -3,6 +3,28 @@
 === !
 
 [%step]
+[source, java]
+----
+...
+if (optional.isPresent()) {
+    var value = optional.get();
+// NOOOOOOOOOOOOOOOOON !!!!
+}
+...
+----
+
+[.notes]
+--
+Code vu en vrai...
+Ici soit on a a main sur la méthode `app.getCodeImputationDefaut()`,
+Sinon je ne suis pas certain qu'on est gagné quoique ce soit, particulièrement en terme de lisibilité
+
+A ce moment là autant continuer à travailler avec du null
+--
+
+=== !
+
+[%step]
 --
 [source,java]
 ----
@@ -13,9 +35,25 @@ String code = Optional.ofNullable(app.getCodeImputationDefaut())
 
 [.notes]
 --
-Code vu en vrai...
-Ici soit on a a main sur la méthode `app.getCodeImputationDefaut()`,
-Sinon je ne suis pas certain qu'on est gagné quoique ce soit, particulièrement en terme de lisibilité
+Ici soit on est sur une représentation du monde exterieur et c'est à la méthode getCodeImputationDefaut de renvoyer une valeur par défaut...
+--
+
+=== !
+
+[%step]
+--
+[source,java]
+----
+String value = Optional.ofNullable(monService.getValue())
+                .orElse(null);
+----
+--
+
+[.notes]
+--
+Je raccourci 2 appels trouvés dans du code.
+
+A ce moment là autant continuer à travailler avec du null, ou faire un vrai exercice de refacto pour ne plus utiliser null!
 --
 
 
