@@ -468,7 +468,8 @@ Charcuterie = getCharcuterieDuCentre().orElse(getCharcuteriePlusLoin());
 
 
 
-Charcuterie = getCharcuterieDuCentre().orElseGet(() -&gt; getCharcuteriePlusLoin());</code></pre></div></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Fromage à raclette (ou core panic)</p></div>
+Charcuterie = getCharcuterieDuCentre()
+    .orElseGet(() -&gt; getCharcuteriePlusLoin());</code></pre></div></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Fromage à raclette (ou core panic)</p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">Fromage morbier = maybeFromage.orElseThrow(() -&gt; new ThreadDeath());</code></pre></div></div></div></section><section><div class="slide-content"><div class="imageblock"><img src="images/todolist.png" alt="todolist" width="600px"></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si on trouve le prix du cadeau on le donne le prix, sinon on donne 20€.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">double participation = cadeau
     .map(cadeau-&gt;cadeau.getPrix())
