@@ -1,0 +1,39 @@
+== Et là je les utilise ?
+
+=== !
+
+[%step]
+--
+[source,java]
+----
+String code = Optional.ofNullable(app.getCodeImputationDefaut())
+                .orElse(Strings.EMPTY);
+----
+--
+
+[.notes]
+--
+Code vu en vrai...
+Ici soit on a a main sur la méthode `app.getCodeImputationDefaut()`,
+Sinon je ne suis pas certain qu'on est gagné quoique ce soit, particulièrement en terme de lisibilité
+--
+
+
+=== Optional<List>
+
+
+icon:poop[4*,role=red]
+
+[.notes]
+--
+Et plus généralement, de tout ce qui ressemble à une collection.
+--
+
+=== Cas à la marge
+
+[.notes]
+--
+Il existe en effet des cas ou la nullité n'a pas le même sens que l'absence, dans ce cas...
+
+Plus globalement, tout ce que j'ai raconté correspond à du cas général, mais on trouvera TOUJOURS des contre-exemples...
+--

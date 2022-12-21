@@ -16,5 +16,6 @@
 include::intro.adoc[]
 include::quand.adoc[]
 include::comment.adoc[]
+include::quand_ne_pas.adoc[]
 include::outro.adoc[]
 

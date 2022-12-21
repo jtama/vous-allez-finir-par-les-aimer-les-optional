@@ -1,6 +1,6 @@
 == Oui mais qu'est-ce que j'en fait ?
 
-===
+=== !
 
 [source, java]
 ----
@@ -12,3 +12,143 @@ if (optional.isPresent()) {
 ...
 ----
 
+[.notes]
+--
+A ce moment là autant continuer à travailler avec du null
+--
+
+=== !
+
+image::raclette_simple.png[width="600px"]
+
+[.notes]
+--
+On va commencer avec les cas simples, en prenant exemple sur une liste de course
+--
+
+=== !
+
+[source, java]
+----
+private Optional<Pain> getPainDeCampagne() { /*TODO implement*/ }
+
+
+Pain pain = getPainDeCampagne().orElse(baguette);
+----
+
+=== !
+
+[source, java, highlight="1..5|7|14"]
+----
+private Optional<Charcuterie> getCharcuterieDuCentre() { /*TODO implement*/ }
+
+private Charcuterie getCharcuteriePlusLoin() {
+    /*TODO Je sens que ça va être long.. 💀*/
+}
+
+Charcuterie = getCharcuterieDuCentre().orElse(getCharcuteriePlusLoin());
+
+
+
+
+
+
+Charcuterie = getCharcuterieDuCentre().orElseGet(() -> getCharcuteriePlusLoin());
+----
+
+[.notes]
+--
+Java est ainsi fait !
+Charcuterie : On ne veut exécuter `getCharcuteriePlusLoin` QUE en cas de besoin !!!
+--
+
+=== !
+
+image::todolist.png[width="600px"]
+
+=== !
+
+[source, java]
+----
+double participation = cadeau
+    .map(cadeau->cadeau.getPrix())
+    .orElse(20l);
+----
+
+=== !
+
+image::sonar.png[]
+
+[.notes]
+--
+Alors là non !
+
+Je prend ici mon baton de pelerin. Sonar c'est très bien. Mais ce n'est pas la vérité absolue ! Restez critique!
+--
+
+=== !
+
+[source, java]
+----
+caviste.getTouraine().ifPresent(bouteille -> onEnPrend(bouteille);
+----
+
+[.notes]
+--
+On note ici l'appel conditionnel de méthode.
+--
+
+=== !
+
+[source, java]
+----
+caviste.getTouraine().
+    .filter(bouteille -> pasTropCher(bouteille))
+    .ifPresent(bouteille -> onEnPrend(bouteille);
+----
+
+[.notes]
+--
+On retrouve beaucoup des méthodes présentent sur les streams.
+--
+
+=== !
+
+=== !
+
+[source, java, highlight="1..2|6..7|11..119"]
+----
+maybePrimeur /*Optional<Primeur>*/
+  .map(primeur -> primeur.getMangue());
+
+
+
+maybePrimeur /*Optional<Primeur>*/
+  .map(primeur -> primeur.getMangue()); /*Optional<Optional<Fruit>>*/
+
+
+
+maybePrimeur /*Optional<Primeur>*/
+  .flatMap(primeur -> primeur.getMangue()) /*Optional<Fruit>>*/
+  .orElse(new Ananas());
+----
+
+[.notes]
+--
+Attention aux optionals d'optionals
+--
+
+=== !
+
+[source, java]
+----
+maybeClef
+  .ifPresentOrElse(
+      clef -> utilise(clef),
+      () -> passeParLaFenêtre());
+----
+
+[.notes]
+--
+Il n'existe pas de ifAbsent, mais on peut transformer cette méthode en ne faisant rien dans le consumer.
+--

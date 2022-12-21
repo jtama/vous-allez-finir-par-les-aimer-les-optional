@@ -1,8 +1,5 @@
-[%notitle]
+[%notitle.transparency]
 == Outro
-
-[.transparency]
-=== !
 
 image::Thats_all_folks.svg[background, size=fill]
 

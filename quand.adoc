@@ -47,4 +47,6 @@ public interface LeMondeExterieurAccess {
 --
 Accès à des tiers.
 On verra plus tard ce qu'on en fait.
+
+Numéro d'Inscription au Répertoire. Votre numéro de sécu quoi...
 --
