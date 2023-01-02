@@ -455,7 +455,9 @@ On verra plus tard ce qu&#8217;on en fait.</p></div>
 
 
 Pain pain = getPainDeCampagne().orElse(baguette);</code></pre></div></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si le boucher du centre a de la charcuterie, sinon chez le boucher BEAUCOUP plus loin.</p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,2,3,4,5|7|14" data-lang="java">private Optional&lt;Charcuterie&gt; getCharcuterieDuCentre() { /*TODO implement*/ }
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,2,3,4,5,6,7|9|20,21" data-lang="java">private Optional&lt;Charcuterie&gt; getCharcuterieDuCentre() {
+    /*TODO implement*/
+}
 
 private Charcuterie getCharcuteriePlusLoin() {
     /*TODO Je sens que ça va être long.. 💀*/
@@ -468,9 +470,16 @@ Charcuterie = getCharcuterieDuCentre().orElse(getCharcuteriePlusLoin());
 
 
 
+
+
+
+
 Charcuterie = getCharcuterieDuCentre()
     .orElseGet(() -&gt; getCharcuteriePlusLoin());</code></pre></div></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Fromage à raclette (ou core panic)</p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">Fromage morbier = maybeFromage.orElseThrow(() -&gt; new ThreadDeath());</code></pre></div></div></div></section><section><div class="slide-content"><div class="imageblock"><img src="images/todolist.png" alt="todolist" width="600px"></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si on trouve le prix du cadeau on le donne le prix, sinon on donne 20€.</p></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">Fromage morbier = maybeFromage.orElseThrow(() -&gt; new ThreadDeath());</code></pre></div></div>
+<aside class="notes"><div class="paragraph"><p>Ici on aurait pu retourner directement une instance d&#8217;exception,
+mais leur instanciation est couteuse à cause du mécanisme de récupération de stacktrace.</p></div></aside></div></section></section>
+<section><section><div class="slide-content"><div class="imageblock"><img src="images/todolist.png" alt="todolist" width="600px"></div><aside class="notes"><div class="paragraph"><p>Quelques utilisations avancées.</p></div></aside></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si on trouve le prix du cadeau on le donne le prix, sinon on donne 20€.</p></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">double participation = cadeau
     .map(cadeau-&gt;cadeau.getPrix())
     .orElse(20l);</code></pre></div></div></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si le caviste a du Touraine, on en prend</p></div>
@@ -479,7 +488,7 @@ Charcuterie = getCharcuterieDuCentre()
 <div class="paragraph"><p>Alors là non !</p></div>
 <div class="paragraph"><p>Je prend ici mon baton de pelerin. Sonar c&#8217;est très bien. Mais ce n&#8217;est pas la vérité absolue ! Restez critique!</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">caviste.getTouraine().ifPresent(bouteille -&gt; onEnPrend(bouteille));</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>On note ici l&#8217;appel conditionnel de méthode.</p></div></aside></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si le caviste a du Touraine ET qu&#8217;il n&#8217;est pas trop cher, on en prend.</p></div>
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">caviste.getTouraine().
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">caviste.getTouraine()
     .filter(bouteille -&gt; pasTropCher(bouteille))
     .ifPresent(bouteille -&gt; onEnPrend(bouteille));</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>On retrouve beaucoup des méthodes présentent sur les streams.</p></div></aside></div></section><section class="use-case"><div class="slide-content"><div class="paragraph"><p>✔️Si le primeur est ouvert ET qu’il a de la mangue, on prend, sinon de l’ananas.</p></div>
@@ -513,19 +522,16 @@ Ici soit on a a main sur la méthode <code>app.getCodeImputationDefaut()</code>,
 Sinon je ne suis pas certain qu&#8217;on est gagné quoique ce soit, particulièrement en terme de lisibilité</p></div>
 <div class="paragraph"><p>A ce moment là autant continuer à travailler avec du null</p></div></aside></div></section><section><div class="slide-content"><div class="openblock fragment"><div class="content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">String code = Optional.ofNullable(app.getCodeImputationDefaut())
                 .orElse(Strings.EMPTY);</code></pre></div></div></div></div>
-<aside class="notes"><div class="paragraph"><p>Ici soit on a a main sur la méthode <code>app.getCodeImputationDefaut()</code>,
-Sinon je ne suis pas certain qu&#8217;on est gagné quoique ce soit, particulièrement en terme de lisibilité</p></div>
-<div class="paragraph"><p>A ce moment là autant continuer à travailler avec du null</p></div></aside></div></section><section><div class="slide-content"><div class="openblock fragment"><div class="content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">String value = Optional.ofNullable(monService.getValue())
+<aside class="notes"><div class="paragraph"><p>Ici soit on est sur une représentation du monde exterieur et c&#8217;est à la méthode getCodeImputationDefaut de renvoyer une valeur par défaut&#8230;&#8203;</p></div></aside></div></section><section><div class="slide-content"><div class="openblock fragment"><div class="content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">String value = Optional.ofNullable(monService.getValue())
                 .orElse(null);</code></pre></div></div></div></div>
-<aside class="notes"><div class="paragraph"><p>Ici soit on a a main sur la méthode <code>app.getCodeImputationDefaut()</code>,
-Sinon je ne suis pas certain qu&#8217;on est gagné quoique ce soit, particulièrement en terme de lisibilité</p></div>
-<div class="paragraph"><p>A ce moment là autant continuer à travailler avec du null</p></div></aside></div></section><section id="_optionallist"><h2>Optional&lt;List&gt;</h2><div class="slide-content"><div class="paragraph"><p><span class="icon red"><i class="fa fa-poop fa-4*"></i></span></p></div>
+<aside class="notes"><div class="paragraph"><p>Je raccourci 2 appels trouvés dans du code.</p></div>
+<div class="paragraph"><p>A ce moment là autant continuer à travailler avec du null, ou faire un vrai exercice de refacto pour ne plus utiliser null!</p></div></aside></div></section><section id="_optionallist"><h2>Optional&lt;List&gt;</h2><div class="slide-content"><div class="paragraph"><p><span class="icon red"><i class="fa fa-poop fa-4*"></i></span></p></div>
 <aside class="notes"><div class="paragraph"><p>Et plus généralement, de tout ce qui ressemble à une collection.</p></div></aside></div></section><section id="_cas_à_la_marge"><h2>Cas à la marge</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Il existe en effet des cas ou la nullité n&#8217;a pas le même sens que l&#8217;absence, dans ce cas&#8230;&#8203;</p></div>
 <div class="paragraph"><p>Plus globalement, tout ce que j&#8217;ai raconté correspond à du cas général, mais on trouvera TOUJOURS des contre-exemples&#8230;&#8203;</p></div></aside></div></section></section>
 <section id="_outro" class="transparency" data-background-image="images/Thats_all_folks.svg" data-background-size="fill"><div class="slide-content">
 <div class="paragraph"><p>Merci \o/ !</p></div>
 <div class="paragraph"><p>Des questions ?</p></div>
-<div class="paragraph medium"><p>Credits: Malcolm Browne, Wokandapix, Warner</p></div>
+<div class="paragraph medium"><p>Crédits photos: Malcolm Browne, Wokandapix, Warner</p></div>
 <aside class="notes"><div class="paragraph"><p>Regarder la javadoc, soyez à l&#8217;aise avec les lambdas et les interfaces du package <code>java.util.function</code></p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
