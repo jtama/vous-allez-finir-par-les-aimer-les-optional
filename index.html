@@ -413,7 +413,10 @@ ul.byline {
 ul.byline li + li {
   margin-top: 0.25em;
 }
-</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/v4-shims.min.css"><link rel="stylesheet" href="css/meetup.css"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title" data-background-size="fill" data-background-image="images/title.png"><h1>Vous allez finir par les aimer les <code>Optional</code>?</h1></section><section><section id="_intro"><div class="slide-content"><div class="imageblock"><img src="images/WFTPM.png" alt="WFTPM"></div><aside class="notes"><div class="paragraph"><p>Vous connaissez cette image ?</p></div>
+</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/v4-shims.min.css"><link rel="stylesheet" href="css/meetup.css"></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title" data-background-size="fill" data-background-image="images/title.png"><h1>Vous allez finir par les aimer les <code>Optional</code>?</h1><div class="preamble"><aside class="notes"><div class="paragraph"><p>J&#8217;ai longtemps hésiter à appeler ce talk  : "Vous allez finir par aimer les optional bordel de merde !"
+mais c&#8217;est un peu brutal, alors pour faire passer ma hargne j&#8217;ai utilisé cette image.</p></div>
+<div class="paragraph"><p>Toute mon estime au premier qui reconnait !</p></div></aside></div></section>
+<section><section id="_intro"><div class="slide-content"><div class="imageblock"><img src="images/WFTPM.png" alt="WFTPM"></div><aside class="notes"><div class="paragraph"><p>Vous connaissez cette image ?</p></div>
 <div class="paragraph"><p>Bon bin ça me représente pas mal. Avec des contexts différents.</p></div>
 <div class="paragraph"><p>Il y a bientôt 10 ans :</p></div>
 <div class="paragraph"><p>Je disais ça : "Haaaa c&#8217;est vraiment nul ifpresent pourrrrrri"</p></div>
@@ -428,7 +431,8 @@ ul.byline li + li {
 <div class="paragraph important-text vertical-align-middle"><p><span class="image"><img src="images/logo_onepoint.jpeg" alt="logo onepoint" width="50"></span>
 onepoint</p></div>
 <div class="paragraph important-text vertical-align-middle"><p><span class="icon"><i class="fa fa-github"></i></span> @jtama <span class="image"><img src="images/avatar.png" alt="avatar" width="100"></span></p></div></div></div>
-<aside class="notes"><div class="paragraph"><p>Mais je n&#8217;ai pas fait mon tour de france, du coup je prend aujourd&#8217;hui mon baton de pellerin pour me rattraper&#8230;&#8203;</p></div></aside></div></section></section>
+<aside class="notes"><div class="paragraph"><p>Mais je n&#8217;ai pas fait mon tour de france, du coup je prend aujourd&#8217;hui mon baton de pellerin pour me rattraper&#8230;&#8203;
+Merci à onepoint qui me permet de parler dans des confs, plutôt que de devoir m&#8217;immoler, je suis un peu douillet&#8230;&#8203;</p></div></aside></div></section></section>
 <section><section id="_quand_les_utiliser" class="light" data-background-image="images/quand.jpg" data-background-size="fill"><h2>Quand les utiliser ?</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>En que producteur de code la question est donc, quand dois-je produire ou choisir de faire produire des <code>Optional</code> ?</p></div></aside></div></section><section><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">public class LeMondeExterieurConfig {
 
     private Optional&lt;String&gt; login;
@@ -529,10 +533,13 @@ Sinon je ne suis pas certain qu&#8217;on est gagné quoique ce soit, particuliè
 <aside class="notes"><div class="paragraph"><p>Et plus généralement, de tout ce qui ressemble à une collection.</p></div></aside></div></section><section id="_cas_à_la_marge"><h2>Cas à la marge</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Il existe en effet des cas ou la nullité n&#8217;a pas le même sens que l&#8217;absence, dans ce cas&#8230;&#8203;</p></div>
 <div class="paragraph"><p>Plus globalement, tout ce que j&#8217;ai raconté correspond à du cas général, mais on trouvera TOUJOURS des contre-exemples&#8230;&#8203;</p></div></aside></div></section></section>
 <section id="_outro" class="transparency" data-background-image="images/Thats_all_folks.svg" data-background-size="fill"><div class="slide-content">
+<div class="paragraph"><p><a href="https://jtama.github.io/vous-allez-finir-par-les-aimer-les-optional/#/" class="bare">https://jtama.github.io/vous-allez-finir-par-les-aimer-les-optional/#/</a></p></div>
 <div class="paragraph"><p>Merci \o/ !</p></div>
 <div class="paragraph"><p>Des questions ?</p></div>
 <div class="paragraph medium"><p>Crédits photos: Malcolm Browne, Wokandapix, Warner</p></div>
-<aside class="notes"><div class="paragraph"><p>Regarder la javadoc, soyez à l&#8217;aise avec les lambdas et les interfaces du package <code>java.util.function</code></p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<aside class="notes"><div class="paragraph"><p>Regarder la javadoc, soyez à l&#8217;aise avec les lambdas et les interfaces du package <code>java.util.function</code></p></div>
+<div class="paragraph"><p>Et n&#8217;oubliez pas demain à 13H30 un choix cornélien:
+"Streetriders : Vous aimez jouer ? Ok ! On vous raconte comment on l&#8217;a développé&#8230;&#8203;" ou "Le DevOps expliqué à mon père, agriculteur à la retraite."</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
