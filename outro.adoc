@@ -7,7 +7,8 @@ https://jtama.github.io/vous-allez-finir-par-les-aimer-les-optional/#/
 
 Merci \o/ !
 
-Des questions ?
+[.vertical-align-middle]
+image:qr.svg[width=200]
 
 [.medium]
 Crédits photos: Malcolm Browne, Wokandapix, Warner
